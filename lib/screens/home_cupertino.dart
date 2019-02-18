@@ -21,9 +21,11 @@ class _HomeCupertinoState extends State<HomeCupertino> {
                 child: Form(
           key: _formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               CupertinoTextField(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 16.0),
                 placeholder: 'Enter some text',
                 // NOTE not common to show error message adjacent to form fields in iOS, so
                 // this is not available
@@ -33,29 +35,13 @@ class _HomeCupertinoState extends State<HomeCupertino> {
                 //   }
                 // },
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 16.0, horizontal: 16.0),
                 child: CupertinoButton(
                   onPressed: () {
-                    // Validate will return true if the form is valid, or false if
-                    // the form is invalid.
                     if (_formKey.currentState.validate()) {
-                      // If the form is valid, we want to show a Snackbar
-                      showCupertinoDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              CupertinoAlertDialog(
-                                title: const Text('Hello'),
-                                content: const Text('This is a message.'),
-                                actions: [
-                                  CupertinoDialogAction(
-                                    child: const Text('Dismiss'),
-                                    onPressed: () {
-                                      Navigator.pop(context, 'Dismiss');
-                                    },
-                                  )
-                                ],
-                              ));
+                      _showDialog();
                     }
                   },
                   child: Text('Submit'),
@@ -64,5 +50,22 @@ class _HomeCupertinoState extends State<HomeCupertino> {
             ],
           ),
         )));
+  }
+
+  _showDialog() {
+    showCupertinoDialog(
+        context: context,
+        builder: (BuildContext context) => CupertinoAlertDialog(
+              title: const Text('Hello'),
+              content: const Text('Submitting form'),
+              actions: [
+                CupertinoDialogAction(
+                  child: const Text('Dismiss'),
+                  onPressed: () {
+                    Navigator.pop(context, 'Dismiss');
+                  },
+                )
+              ],
+            ));
   }
 }

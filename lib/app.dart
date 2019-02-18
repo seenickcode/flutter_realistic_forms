@@ -7,8 +7,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Forms Demo',
-      // home: HomeCupertino(),
-      home: HomeMaterial(),
+      home: HomeCupertino(),
+      // home: HomeMaterial(),
     );
   }
 }

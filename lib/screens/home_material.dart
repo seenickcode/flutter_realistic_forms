@@ -12,34 +12,41 @@ class _HomeMaterialState extends State<HomeMaterial> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Form Demo')),
-        body: Builder(
-            builder: (context) => Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextFormField(
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                        },
+        body: Container(
+            padding:
+                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+            child: Builder(
+                builder: (context) => Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TextFormField(
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                            },
+                          ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16.0, horizontal: 16.0),
+                            child: RaisedButton(
+                              onPressed: () {
+                                if (_formKey.currentState.validate()) {
+                                  _showDialog(context);
+                                }
+                              },
+                              child: Text('Submit'),
+                            ),
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16.0),
-                        child: RaisedButton(
-                          onPressed: () {
-                            if (_formKey.currentState.validate()) {
-                              // If the form is valid, we want to show a Snackbar
-                              Scaffold.of(context).showSnackBar(
-                                  SnackBar(content: Text('Processing Data')));
-                            }
-                          },
-                          child: Text('Submit'),
-                        ),
-                      ),
-                    ],
-                  ),
-                )));
+                    ))));
+  }
+
+  _showDialog(BuildContext context) {
+    Scaffold.of(context)
+        .showSnackBar(SnackBar(content: Text('Submitting form')));
   }
 }
