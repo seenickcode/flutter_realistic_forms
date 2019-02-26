@@ -52,9 +52,7 @@ class _HomeMaterialState extends State<HomeMaterial> {
                             title: const Text('Monthly Newsletter'),
                             value: _user.newsletter,
                             onChanged: (bool val) {
-                              setState(() {
-                                _user.newsletter = val;
-                              });
+                              setState(() => _user.newsletter = val);
                             },
                           ),
                           Container(
