@@ -27,13 +27,6 @@ class _HomeCupertinoState extends State<HomeCupertino> {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 16.0, vertical: 16.0),
                 placeholder: 'Enter some text',
-                // NOTE not common to show error message adjacent to form fields in iOS, so
-                // this is not available
-                // validator: (value) {
-                //   if (value.isEmpty) {
-                //     return 'Please enter some text';
-                //   }
-                // },
               ),
               Container(
                 padding: const EdgeInsets.symmetric(
