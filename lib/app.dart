@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/home_cupertino.dart';
 import 'screens/home_material.dart';
-import 'screens/home_custom.dart';
 
 class App extends StatelessWidget {
   @override
