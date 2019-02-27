@@ -1,22 +1,18 @@
 class User {
+  static const String PassionCooking = 'cooking';
+  static const String PassionHiking = 'hiking';
+  static const String PassionTraveling = 'traveling';
+
   String firstName = '';
   String lastName = '';
-  Map<String, bool> passions = {};
+  Map<String, bool> passions = {
+    PassionCooking: false,
+    PassionHiking: false,
+    PassionTraveling: false
+  };
   bool newsletter = false;
-
-  User() {
-    passions[Activity.Cooking] = false;
-    passions[Activity.Traveling] = false;
-    passions[Activity.Hiking] = false;
-  }
 
   save() {
     print('saving user using a web service');
   }
-}
-
-class Activity {
-  static const Cooking = 'cooking';
-  static const Traveling = 'traveling';
-  static const Hiking = 'hiking';
 }
