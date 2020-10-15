@@ -30,6 +30,7 @@ class _HomeMaterialState extends State<HomeMaterial> {
                               if (value.isEmpty) {
                                 return 'Please enter your first name';
                               }
+                              return null;
                             },
                             onSaved: (val) =>
                                 setState(() => _user.firstName = val),
@@ -41,6 +42,7 @@ class _HomeMaterialState extends State<HomeMaterial> {
                                 if (value.isEmpty) {
                                   return 'Please enter your last name.';
                                 }
+                                return null;
                               },
                               onSaved: (val) =>
                                   setState(() => _user.lastName = val)),
